@@ -8,14 +8,11 @@ public class ClassNameHere {
       int cols = 1;
       while(rows-cols>=0){
          int x = cols;
-         while(x>0){
-            if(x==1){
-               System.out.println('*');
-            }else{
-               System.out.print('*');
-            }
+         while(x>1){
+            System.out.print('*');
             x -= 1;
          }
+         System.out.println('*');
          cols += 1;
       }
    }
