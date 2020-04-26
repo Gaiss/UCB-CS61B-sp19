@@ -22,3 +22,20 @@ Name this new method `DrawTriangle` and give it a return type of `void` (this me
 The `DrawTriangle` method should take one parameter named `N`, and it should print out a triangle exactly like your triangle from exercise 1a, but `N` asterisks tall instead of 5.
 
 After writing `DrawTriangle`, modify the main function so that it calls `DrawTriangle` with `N = 10`.
+
+
+## Exercise 2
+Using everything you’ve learned so far on this homework, you’ll now create a function with the signature `public static int max(int[] m)` that returns the maximum value of an int array. You may assume that all of the numbers are greater than or equal to zero.
+
+Modify the code below so that `max` works as described. Furthermore, modify `main` so that the `max` method is called on the given array and its max printed out (in this case, it should print `22`).
+```
+public class ClassNameHere {
+    /** Returns the maximum value from m. */
+    public static int max(int[] m) {
+        return 0;
+    }
+    public static void main(String[] args) {
+       int[] numbers = new int[]{9, 2, 15, 2, 22, 10, 6};      
+    }
+}
+```
