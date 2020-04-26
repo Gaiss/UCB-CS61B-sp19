@@ -39,3 +39,7 @@ public class ClassNameHere {
     }
 }
 ```
+
+
+## Exercise 3
+Rewrite your solution to Exercise 2 so that it uses a `for` loop.
