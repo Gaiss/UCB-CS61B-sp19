@@ -50,8 +50,9 @@ Let’s take a step back now and look at the physics behind our simulations. Our
 
    * $F=\frac_{G⋅m1⋅m2}{r^2}$
    * $r^2=dx^2+dy^2$
-   * $F_x=\frac_{F⋅dx}{r}
-   * $F_y=\frac_{F⋅dy}{r}
+   * $F_x=\frac_{F⋅dx}{r}$
+   * $F_y=\frac_{F⋅dy}{r}$
+   
 Look at the image below and make sure you understand what each variable represents!
 
 Note that force is a vector (i.e., it has direction). In particular, be aware that dx and dy are signed (positive or negative).
