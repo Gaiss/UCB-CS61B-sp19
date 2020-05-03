@@ -2,6 +2,7 @@
 
 <a href="https://sp19.datastructur.es/materials/proj/proj0/proj0#calcdistance" target="_blank">Website</a>
 
+<a href="https://www.cs.princeton.edu/courses/archive/spring20/cos126/assignments/nbody/checklist.html" target="_blank">Probably useful reference</a>
 ## The Body Class and Its Constructor
 You’ll start by creating a Body class. In your favorite text editor, create a new file called Body.java. If you haven’t picked a text editor, we recommend Sublime Text. Remember that your .java files should have the same name as the class it contains.
 
@@ -217,3 +218,56 @@ And running the following command:
 java NBody 157788000.0 25000.0 data/planets.txt
 ```
 You should see the sun and four planets sitting motionless. You are almost done.
+
+## Creating an Animation
+Everything you’ve done so far is leading up to this moment. With only a bit more code, we’ll get something very cool.
+
+To create our simulation, we will discretize time (please do not mention this to Stephen Hawking). The idea is that at every discrete interval, we will be doing our calculations and once we have done our calculations for that time step, we will then update the values of our `Body`s and then redraw the universe.
+
+Finish your `main` method by adding the following:
+
+* Enable double buffering by calling `enableDoubleBuffering()`. This is a graphics technique to prevent flickering in the animation. This should be just a single method call, so you shouldn’t do anything complicated here. You can see an example in `StdDrawDemo.java`. Here’s the official documentation that explains it in a few sentences. You don’t have to understand this for CS61B. Just know that if you don’t call this function, any attempt at smooth animation will look bad and flickery (remove it and see what happens!).
+   * When double buffering is enabled by calling `enableDoubleBuffering()`, all drawing takes place on the offscreen canvas. The offscreen canvas is not displayed. Only when you call `show()` does your drawing get copied from the offscreen canvas to the onscreen canvas, where it is displayed in the standard drawing window. You can think of double buffering as collecting all of the lines, points, shapes, and text that you tell it to draw, and then drawing them all simultaneously, upon request.
+* Create a variable that represents time. Set it to 0. Set up a loop to loop until this time variable reaches (and includes) the T from above.
+* For each time through the loop, do the following:
+   * Create an `xForces` array and `yForces` array.
+   * Calculate the net x and y forces for each Body, storing these in the `xForces` and `yForces` arrays respectively.
+   * After calculating the net forces for every Body, call `update` on each of the `Body`s. This will update each body’s position, velocity, and acceleration.
+   * Draw the background image.
+   * Draw all of the `Body`s.
+   * Show the offscreen buffer (see the `show` method of StdDraw).
+   * Pause the animation for 10 milliseconds (see the `pause` method of StdDraw). You may need to tweak this on your computer.
+   * Increase your time variable by `dt`.
+**Important**: For each time through the main loop, do not make any calls to `update` until all forces have been calculated and safely stored in `xForces` and `yForces`. For example, don’t call bodies[0].update() until after the entire xForces and yForces arrays are done! The difference is subtle, but the autograder will be upset if you call `bodies[0].update` before you calculate `xForces[1]` and `yForces[1]`.
+
+Compile and test your program:
+```
+javac NBody.java
+java NBody 157788000.0 25000.0 data/planets.txt
+```
+
+## Printing the Universe
+When the simulation is over, i.e. when you’ve reached time `T`, you should print out the final state of the universe in the same format as the input, e.g.:
+```
+5
+2.50e11
+1.4925e+11 -1.0467e+10  2.0872e+03  2.9723e+04  5.9740e+24    earth.gif
+-1.1055e+11 -1.9868e+11  2.1060e+04 -1.1827e+04  6.4190e+23    mars.gif
+-1.1708e+10 -5.7384e+10  4.6276e+04 -9.9541e+03  3.3020e+23 mercury.gif
+2.1709e+05  3.0029e+07  4.5087e-02  5.1823e-02  1.9890e+30      sun.gif
+6.9283e+10  8.2658e+10 -2.6894e+04  2.2585e+04  4.8690e+24    venus.gif
+```
+You are welcome to try to figure this out on your own, but if you’d prefer not to, the solution is right below:
+```
+StdOut.printf("%d\n", bodies.length);
+StdOut.printf("%.2e\n", radius);
+for (int i = 0; i < bodies.length; i++) {
+    StdOut.printf("%11.4e %11.4e %11.4e %11.4e %11.4e %12s\n",
+                  bodies[i].xxPos, bodies[i].yyPos, bodies[i].xxVel,
+                  bodies[i].yyVel, bodies[i].mass, bodies[i].imgFileName);   
+}
+```
+Here, `bodies` is our filler variable name for reading in the bodies, as per the third bullet under Collecting All Needed Input. You may have a different variable name.
+
+This isn’t all that exciting (which is why we’ve provided a solution), but we’ll need this method to work correctly to autograde your assignment.
+Make sure to also try out some of the other simulations, which can all be found in the data directory. Some of them are very cool.
