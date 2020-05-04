@@ -99,7 +99,10 @@ public class IntList {
      */
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        IntList C = new IntList(A.first, null);
+        if(A == null){
+            return B;
+        }
+        IntList C = new IntList(A.first, null); // Incorrect to write 'IntList C = new IntList(A.first, A.rest);'!!!
         IntList p = A;
         IntList q = C;
         while(p.rest != null){
