@@ -1,5 +1,7 @@
 # Lab 2: Unit Testing with JUnit and IntLists
 
+<a href="https://sp19.datastructur.es/materials/lab/lab2/lab2#application-intlists" target="_blank">Website</a>
+
 ## Introduction
 In this lab, you will learn about basic IntelliJ features, destructive vs. non-destructive methods, and IntLists.
 
