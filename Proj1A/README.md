@@ -1,5 +1,7 @@
 # Project 1A: Data Structures
 
+<a href="https://sp19.datastructur.es/materials/proj/proj1a/proj1a" target="_blank">Website</a>
+
 ## Introduction
 In project 1A, we will build implementations of a “Double Ended Queue” using both lists and arrays. In project 1B (next week), we will learn how to write our own tests for those data structures, and will use the Double Ended Queue to solve some small real world probelms.
 
