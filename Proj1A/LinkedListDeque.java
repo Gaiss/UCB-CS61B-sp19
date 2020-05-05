@@ -1,5 +1,5 @@
 /* 双端链表并不是双向链表，其特点是第一个链结点与最后一个链结点直接相连 */
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T>{
     private Node sentinel;
     private int size;
 
@@ -32,31 +32,26 @@ public class LinkedListDeque<T> implements Deque<T>{
         size = other.size;
     }
 
-    @Override
     public void addFirst(T item){
         sentinel.next = new Node(item, sentinel, sentinel.next);
         sentinel.next.next.prev = sentinel.next;
         size++;
     }
 
-    @Override
     public void addLast(T item){
         sentinel.prev = new Node(item, sentinel.prev, sentinel);
         sentinel.prev.prev.next = sentinel.prev;
         size++;
     }
 
-    @Override
     public boolean isEmpty(){
         return size == 0;
     }
 
-    @Override
     public int size(){
         return size;
     }
 
-    @Override
     public void printDeque(){
         if (isEmpty()){
             return;
@@ -69,7 +64,6 @@ public class LinkedListDeque<T> implements Deque<T>{
         System.out.println(p.item);
     }
 
-    @Override
     public T removeFirst(){
         if (isEmpty()){
             return null;
@@ -81,7 +75,6 @@ public class LinkedListDeque<T> implements Deque<T>{
         return t;
     }
 
-    @Override
     public T removeLast(){
         if (isEmpty()){
             return null;
@@ -93,7 +86,6 @@ public class LinkedListDeque<T> implements Deque<T>{
         return t;
     }
 
-    @Override
     public T get(int index){
         if (index > size){ // 包括了isEmpty()
             return null;
