@@ -52,11 +52,11 @@ public class UnionFind {
         if (!connected(v1,v2)){
             //Connecting smaller size set's root to larger size set's root.
             if (sizeOf(v1) > sizeOf(v2)){
-                parent[find(v2)] = find(v1);
                 parent[find(v1)] -= sizeOf(v2);
+                parent[find(v2)] = find(v1);               
             }else {
-                parent[find(v1)] = find(v2);
                 parent[find(v2)] -= sizeOf(v1);
+                parent[find(v1)] = find(v2);
             }
         }
     }
